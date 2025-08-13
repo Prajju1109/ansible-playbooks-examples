@@ -1,0 +1,10 @@
+
+---
+- name: Manage a service
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure cron service is running
+      ansible.builtin.service:
+        name: cron
+        state: started

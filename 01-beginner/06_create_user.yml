@@ -1,0 +1,10 @@
+
+---
+- name: Create a system user
+  hosts: all
+  become: yes
+  tasks:
+    - name: Add a new user named 'ansible_user'
+      ansible.builtin.user:
+        name: ansible_user
+        state: present

@@ -1,0 +1,9 @@
+
+---
+- name: Conditional tasks example
+  hosts: all
+  tasks:
+    - name: Run only on Debian family systems
+      ansible.builtin.debug:
+        msg: "This is a Debian-based system"
+      when: ansible_os_family == "Debian"

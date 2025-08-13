@@ -1,0 +1,9 @@
+
+---
+- name: Deploy a templated config
+  hosts: all
+  tasks:
+    - name: Place template file
+      ansible.builtin.template:
+        src: files/sample_template.j2
+        dest: /tmp/generated_config.txt

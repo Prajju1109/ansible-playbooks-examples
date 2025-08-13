@@ -1,0 +1,17 @@
+
+---
+- name: Install curl
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install curl on Debian/Ubuntu
+      ansible.builtin.apt:
+        name: curl
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install curl on RHEL/CentOS
+      ansible.builtin.yum:
+        name: curl
+        state: present
+      when: ansible_os_family == "RedHat"

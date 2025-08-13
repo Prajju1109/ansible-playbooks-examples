@@ -1,0 +1,6 @@
+
+---
+- name: Demo role usage
+  hosts: all
+  roles:
+    - sample_role

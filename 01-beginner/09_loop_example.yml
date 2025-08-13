@@ -1,0 +1,14 @@
+
+---
+- name: Install multiple packages
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install list of packages
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - curl
+        - git
+        - vim

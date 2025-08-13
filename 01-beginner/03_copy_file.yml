@@ -1,0 +1,9 @@
+
+---
+- name: Copy file to remote
+  hosts: all
+  tasks:
+    - name: Copy sample.txt to /tmp/
+      ansible.builtin.copy:
+        src: files/sample.txt
+        dest: /tmp/sample.txt
