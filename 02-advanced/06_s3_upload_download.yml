@@ -1,0 +1,12 @@
+
+---
+- name: Upload and download file to S3 (example)
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Ensure boto3 is installed
+      ansible.builtin.pip:
+        name: boto3
+    - name: S3 upload placeholder
+      ansible.builtin.debug:
+        msg: "Use aws_s3 module with proper AWS creds to manage S3."

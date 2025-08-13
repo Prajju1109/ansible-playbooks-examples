@@ -1,0 +1,16 @@
+
+---
+- name: Install and configure MySQL (Debian example)
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install mysql-server
+      ansible.builtin.apt:
+        name: default-mysql-server
+        state: present
+      when: ansible_facts['os_family'] == 'Debian'
+    - name: Ensure MySQL is running
+      ansible.builtin.service:
+        name: mysql
+        state: started
+        enabled: true

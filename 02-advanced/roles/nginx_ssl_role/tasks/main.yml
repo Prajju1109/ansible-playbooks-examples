@@ -1,0 +1,31 @@
+
+---
+- name: Install nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+
+- name: Copy sample site
+  ansible.builtin.copy:
+    src: files/index.html
+    dest: /var/www/html/index.html
+    mode: '0644'
+
+- name: Deploy TLS cert and key if present
+  ansible.builtin.copy:
+    src: files/sample_cert.crt
+    dest: /etc/ssl/certs/sample_cert.crt
+    mode: '0644'
+  ignore_errors: true
+
+- ansible.builtin.copy:
+    src: files/sample_key.key
+    dest: /etc/ssl/private/sample_key.key
+    mode: '0600'
+  ignore_errors: true
+
+- name: Ensure nginx is started
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true

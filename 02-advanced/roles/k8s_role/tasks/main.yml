@@ -1,0 +1,7 @@
+
+---
+- name: Apply Kubernetes deployment manifest from template
+  community.kubernetes.k8s:
+    state: present
+    definition: "{{ lookup('template', 'templates/deployment.yml.j2') | from_yaml }}"
+  when: kubeconfig is defined

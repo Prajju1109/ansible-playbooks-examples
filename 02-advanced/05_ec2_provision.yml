@@ -1,0 +1,14 @@
+
+---
+- name: Provision an EC2 instance (example)
+  hosts: localhost
+  connection: local
+  vars:
+    ec2_region: us-east-1
+  tasks:
+    - name: Ensure boto3 is installed
+      ansible.builtin.pip:
+        name: boto3
+    - name: Provisioning placeholder
+      ansible.builtin.debug:
+        msg: "EC2 provisioning requires AWS credentials; this is a template."

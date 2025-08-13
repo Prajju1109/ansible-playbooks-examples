@@ -1,0 +1,25 @@
+
+---
+- name: Ensure Docker package dependencies are present
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release
+  when: ansible_facts['os_family'] == 'Debian'
+
+- name: Install Docker (Debian example)
+  ansible.builtin.apt:
+    name: docker.io
+    state: latest
+  when: ansible_facts['os_family'] == 'Debian'
+
+- name: Ensure docker service is started and enabled
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: true

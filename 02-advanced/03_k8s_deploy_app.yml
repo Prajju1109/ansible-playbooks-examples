@@ -1,0 +1,15 @@
+
+---
+- name: Deploy app to Kubernetes cluster (requires kubeconfig)
+  hosts: localhost
+  connection: local
+  vars:
+    kubeconfig: "~/.kube/config"
+    app_name: demo-app
+    image: nginx:stable
+  roles:
+    - role: k8s_role
+      vars:
+        kubeconfig: "{{ kubeconfig }}"
+        app_name: "{{ app_name }}"
+        image: "{{ image }}"

@@ -1,0 +1,14 @@
+
+---
+- name: Install Jenkins (Debian example)
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Java
+      ansible.builtin.package:
+        name: openjdk-11-jdk
+        state: present
+      when: ansible_facts['os_family'] == 'Debian'
+    - name: Jenkins install placeholder
+      ansible.builtin.debug:
+        msg: "Install Jenkins via apt repo or package as needed."

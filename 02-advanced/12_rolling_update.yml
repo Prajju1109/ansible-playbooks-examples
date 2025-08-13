@@ -1,0 +1,15 @@
+
+---
+- name: Rolling update web servers
+  hosts: webservers
+  serial: 2
+  tasks:
+    - name: Pull latest code from git
+      ansible.builtin.git:
+        repo: "https://github.com/example/app.git"
+        dest: "/var/www/app"
+        version: "main"
+    - name: Restart nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted

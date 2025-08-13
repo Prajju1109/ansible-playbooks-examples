@@ -1,0 +1,7 @@
+
+---
+- name: Install Docker and start service
+  hosts: all
+  become: yes
+  roles:
+    - docker_role

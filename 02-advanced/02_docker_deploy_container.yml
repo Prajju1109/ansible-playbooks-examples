@@ -1,0 +1,13 @@
+
+---
+- name: Deploy a container using Docker module
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure nginx container is present
+      community.docker.docker_container:
+        name: demo_nginx
+        image: nginx:stable
+        state: started
+        published_ports:
+          - "8080:80"

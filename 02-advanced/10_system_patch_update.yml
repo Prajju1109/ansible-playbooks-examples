@@ -1,0 +1,16 @@
+
+---
+- name: Patch and update system packages
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update apt cache and upgrade (Debian)
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: dist
+      when: ansible_facts['os_family'] == 'Debian'
+    - name: Update yum (RedHat)
+      ansible.builtin.yum:
+        name: "*"
+        state: latest
+      when: ansible_facts['os_family'] == 'RedHat'

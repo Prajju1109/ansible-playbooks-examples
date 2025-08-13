@@ -1,0 +1,16 @@
+
+---
+- name: Manage firewall rules (ufw example)
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure ufw is installed (Debian)
+      ansible.builtin.apt:
+        name: ufw
+        state: present
+      when: ansible_facts['os_family'] == 'Debian'
+    - name: Allow OpenSSH
+      ansible.posix.ufw:
+        rule: allow
+        name: OpenSSH
+      when: ansible_facts['os_family'] == 'Debian'
