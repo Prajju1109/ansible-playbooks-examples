@@ -8,4 +8,8 @@
       ansible.builtin.file:
         path: /opt/demo
         state: directory
-        mode: '0755'
+        mode: '0755'   #In Linux/Unix, file permissions are often written in octal (base-8).
+                      #The leading 0 tells the system (and Ansible/Python) that the number is octal (base 8), not decimal.
+                        #Without it, some programming languages or tools may misinterpret the number.
+                        # For example:
+                         # 0755 (octal) → permissions rwxr-xr-x
