@@ -8,3 +8,7 @@
       ansible.builtin.user:
         name: ansible_user
         state: present
+        create_home: yes             #create home directory
+        shell: /bin/bash
+        groups: sudo                 #Membership in the sudo group
+        password: "{{ 'Passw0rd' | password_hash('sha512') }}"
