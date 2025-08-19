@@ -1,0 +1,14 @@
+#Install dynamic inventory 
+   ansible-galaxy collection install amazon.aws
+
+#Create a file aws_ec2.yml
+plugin: amazon.aws.aws_ec2
+regions:
+  - ap-south-1    # Change to your AWS region
+keyed_groups:
+  - key: tags.Name
+    prefix: instance
+    
+
+#Test inventory:   ansible-inventory -i aws_ec2.yml --list
+   (This will pull EC2 instances from AWS and list them as inventory.)
