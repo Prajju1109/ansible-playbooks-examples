@@ -5,5 +5,5 @@
   tasks:
     - name: Place template file
       ansible.builtin.template:
-        src: files/sample_template.j2
+        src: files/sample_template.j2   #j2 meanins jinja2 it is a temple file ,where it puts variables logic inside txt file 
         dest: /tmp/generated_config.txt
